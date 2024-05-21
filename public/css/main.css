@@ -1,0 +1,418 @@
+* {
+  list-style: none;
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  height: 100vh;
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;  
+  box-sizing: border-box;
+}
+body::-webkit-scrollbar {
+    display: none;
+}
+
+main {
+  height: 100vh;
+  background-image: url(/images/wow.png);
+  background-size: 100vw 100vh;
+}
+
+button {
+  cursor: pointer;
+}
+
+.header {
+  margin: 30px 30px 10px 30px;
+}
+
+/* HOME PAGE */
+.random-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.home-text {
+  font-weight: 800;
+  font-size: 50px;
+  font-style: italic;
+  text-transform: uppercase;
+  color: yellow;
+  text-shadow: black 3px 3px;
+}
+
+.owen-btn .animated-pic {
+  height: 500px;
+  animation: flipOwen .5s infinite;
+}
+/* Animation for Owen picture */
+@keyframes flipOwen {
+ 0% {
+  transform: scaleX(1);
+ }
+ 50% {
+  transform: scaleX(1);
+ }
+ 51% {
+  transform: scaleX(-1);
+ }
+ 100% {
+  transform: scaleX(-1);
+ }
+
+}
+
+/* RANDOM WOW PAGE */
+
+/* SAY WOW BLOCK */
+.say-wow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px;
+}
+.say-wow h2 {
+  font-weight: 800;
+  font-size: 45px;
+  font-style: italic;
+  text-transform: uppercase;
+  color: yellow;
+  text-shadow: black 3px 3px;
+}
+.say-wow h3 {
+  font-weight: 800;
+  font-size: 23px;
+  font-style: italic;
+  text-transform: uppercase;
+  color: yellow;
+  text-shadow: black 2px 2px;
+}
+.owen-btn {
+  background: none;
+  border: none;
+}
+.owen-btn:hover {
+  transform: scaleX(-1);
+}
+.owen-btn img {
+  height: 250px;
+}
+
+/*MOVIE INFO BLOCK*/
+.info-container {
+  padding: 50px 130px;
+  background-color: #fafafa;
+  display: grid;
+  grid-template-columns: 250px 1fr 1fr;
+  grid-template-rows: auto;
+  box-sizing: border-box;
+}
+.info-header {
+  grid-column: span 3;
+  font-weight: 800;
+  font-size: 30px;
+  font-style: italic;
+  text-transform: uppercase;
+  color: yellow;
+  text-shadow: black 3px 3px;
+}
+.facts ul {
+  padding-top: 10px;
+}
+li {
+  padding: 15px;
+  font-size: 20px;
+}
+.info-title {
+  font-weight: bold;
+}
+
+.poster img {
+  height: 300px;
+  border: black solid 4px;
+}
+
+.collapsibles {
+  box-sizing: border-box;
+}
+/* COLLAPSIBLE - more info + clip from movie */
+.collapsible {
+  background-color: #fafafa;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-style: italic;
+  font-weight: bold;
+  color: black;
+  border-bottom: yellow double 10px;
+}
+
+.active, .collapsible:hover {
+  border-bottom: yellow solid 10px;
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  border: yellow solid 3px;
+}
+
+.collapsible:after {
+  content: '\02795'; 
+  font-size: 13px;
+  color: white;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2796";
+}
+
+.collapsible1, .collapsible2 {
+  margin: 20px;
+}
+.collapsible-info li {
+  padding: 10px;
+  font-size: 15px;
+}
+
+/* BOTTOM WOW BUTTONS */
+
+.wow-buttons {
+  padding: 50px 130px;;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.get-random-wow {
+  margin: 30px;
+}
+.random-btn-text {
+  cursor: pointer;
+  background-color: yellow;
+  box-shadow: black 5px 5px;
+  border: none;
+  font-weight: 800;
+  font-size: 30px;
+  font-style: italic;
+  text-transform: uppercase;
+  padding: 15px 20px;
+  transition: scale .3s ease;
+}
+.random-btn-text:hover {
+  scale: 1.1;
+}
+.filter-container {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin: 20px;
+  padding: 20px;
+  border-top: black dashed 5px;
+}
+.director-container,
+.movie-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.dropdown-title {
+  font-weight: 800;
+  font-size: 20px;
+  font-style: italic;
+  text-transform: uppercase;
+}
+select {
+  padding: 15px;
+  margin: 10px;
+  font-size: 15px;
+  border: yellow solid 6px;
+  box-shadow: black 4px 4px;
+  cursor: pointer;
+}
+select:hover {
+  background-color: lightgoldenrodyellow;
+}
+option {
+  max-width: 100%;
+  overflow: hidden;
+  word-wrap: normal !important;
+  white-space: normal;
+}
+.director-btn, 
+.movie-btn {
+  margin: 10px;
+  padding: 15px 20px;
+  background-color: yellow;
+  box-shadow: black 5px 5px;
+  border: none;
+  font-weight: 800;
+  font-size: 15px;
+  font-style: italic;
+  text-transform: uppercase;
+  transition: scale .3s ease;
+}
+.director-btn:hover,
+.movie-btn:hover {
+  scale: 1.1;
+}
+
+/* FOOTER */
+footer {
+  background-color: yellow;
+  padding: 20px;
+  text-align: center;
+}
+
+@media (max-width: 1600px) {
+  main {
+    background-size: cover;
+  }
+
+}
+@media (max-width: 1050px) {
+  .home-text {
+    font-size: 40px;
+    text-shadow: black 3px 3px;
+    text-align: center;
+  }
+  
+  .owen-btn .animated-pic {
+    height: 500px;
+  }
+
+  .info-container {
+    padding: 50px 130px;
+  }
+  .facts {
+    grid-column: span 2;
+  }
+  .collapsibles {
+    grid-column: span 3;
+  }
+
+  .random-btn-text {
+    font-size: 20px;
+  }
+
+  .filter-container {
+    flex-direction: column;
+  }
+}
+@media (max-width: 820px) {
+  
+  .home-text {
+    font-size: 25px;
+    text-shadow: black 3px 3px;
+    text-align: center;
+  }
+  .owen-btn .animated-pic {
+    height: 300px;
+  }
+
+  .say-wow {
+    display: flex;
+    flex-direction: column;
+  }
+  .owen-btn img {
+    height: 270px;
+  }
+  .info-container {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .wow-buttons {
+    padding: 30px;
+  } 
+  
+  select {
+    padding: 10px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 500px) {
+  .info-container {
+    padding: 30px 10px;
+  }
+
+  .facts ul {
+    padding: 0;
+  }
+  .facts li {
+    font-size: 15px;
+  }
+  
+  .collapsible {
+    font-size: 15px;
+  }
+
+  .collapsibles {
+    width: 80%;
+  }
+  .collapsible1, .collapsible2 {
+    margin: 0;
+  }
+  .collapsible-info li {
+    padding: 10px;
+    font-size: 12px;
+  }
+  .collapsible-info {
+    padding: 0;
+  }
+  video {
+    width: 200px;
+    height: 150px;
+  }
+
+  .filter-container {
+    margin: 25px 0;
+    padding: 25px 10px 10px 10px;
+  }
+  .wow-buttons {
+    padding: 10px;
+  }
+  .get-random-wow {
+    margin: 30px 10px;
+  }
+
+  .random-btn-text {
+    font-size: 15px;
+  }
+
+  .dropdown-title {
+    font-size: 14px;
+  }
+  select {
+    padding: 0;
+  }
+  .director-btn, 
+  .movie-btn {
+    font-size: 12px;
+    padding: 10px 15px;
+  }
+
+  footer p {
+    font-size: 13px;
+  }
+}

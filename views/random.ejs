@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Owen Says Wow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+  <div class="header">
+    <a href="/"><img src="images/home.png" alt="home icon" height="30px"></a>
+  </div>
+ 
+  <!--Image where Owen says random wow when clicked-->
+  <div class="say-wow">
+    <h2>"Wow"</h2>
+    <button onclick="
+      let wow = new Audio('<%=locals.movie.audio%>');
+      wow.play();
+    " class="owen-btn"><img src="images/owen.png" alt="picture of owen wilson"></button>
+    <h3>(Click me to hear it!)</h3>
+  </div>
+
+  <!-- Displays info about the movie the random wow is in -->
+  <div class="info-container">
+    <% if (locals.movie) { %>
+      <h2 class="info-header">The Movie</h2>
+      <div class="poster">
+        <img src="<%= locals.movie.poster %>" alt="movie poster">
+      </div>
+      <div class="facts">
+        <ul>
+          <li><span class="info-title">Movie:</span> <%= locals.movie.movie %></li>
+          <li><span class="info-title">Year:</span> <%= locals.movie.year %></li>
+          <li><span class="info-title">Director:</span> <%= locals.movie.director %></li>
+        </ul>
+      </div>
+
+      <div class="collapsibles">
+        <!--- Collapsible with additional info about movie --->
+        <div class="collapsible1">
+          <button type="button" class="collapsible">Additional info</button>
+            <div class="content">
+              <ul class="collapsible-info">
+                <li><span class="info-title">Character:</span> <%= locals.movie.character %></li>
+                <li><span class="info-title">Timestamp:</span> <%= locals.movie.timestamp %></li>
+                <li><span class="info-title">Full line:</span> <%= locals.movie.full_line %></li>
+                <li><span class="info-title">Current wow in movie:</span> <%= locals.movie.current_wow_in_movie %></li>
+                <li><span class="info-title">Total wows in movie:</span> <%= locals.movie.total_wows_in_movie %></li>
+              </ul>
+            </div>
+        </div>
+        <!--- Collapsible for clip of random wow --->
+        <div class="collapsible2">
+          <button type="button" class="collapsible">Clip in movie</button>
+            <div class="content">
+              <video width="320" height="240" controls>
+                <source src="<%= locals.movie.video['1080p'] %>" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+        </div>
+      </div>
+    <% } %> 
+
+    <!--Error handling-->
+    <% if (locals.error) { %>
+      <h2> <%= error %></h2>
+    <% } %>
+  </div>
+
+  <!--Buttons for random wows-->
+    <div class="wow-buttons">
+      <!-- Get random wow (button) -->
+      <form class="get-random-wow" action="/random" method="post">
+          <input type="submit" class="random-btn-text" value='Another random "wow"'>
+      </form>
+
+      <div class="filter-container">
+        <!-- Get random wow from a specific director from dropdown list -->
+        <div class="director-container">
+          <h2 class="dropdown-title">Random "wow" from a specific director</h2>
+          <form action="/director" class="form" method="post">
+            <!-- <label for="director">Choose a director:</label></br> -->
+            <select id="director" name="director">
+              <option value="alan rudolph">Alan Rudolph</option>
+              <option value="ben stiller">Ben Stiller</option>
+              <option value="betty thomas">Betty Thomas</option>
+              <option value="brian fee">Brian Fee</option>
+              <option value="david dobkin">David Dobkin</option>
+              <option value="david frankel">David Frankel</option>
+              <option value="george armitage">George Armitage</option>
+              <option value="jan de bont">Jan de Bont</option>
+              <option value="jay roach">Jay Roach</option>
+              <option value="jimmy hayward">Jimmy Hayward</option>
+              <option value="joe russo and anthony russo">Joe Russo and Anthony Russo</option>
+              <option value="john erick dowdle">John Erick Dowdle</option>
+              <option value="john lasseter">John Lasseter</option>
+              <option value="lawrence sher">Lawrence Sher</option>
+              <option value="matthew weiner">Matthew Weiner</option>
+              <option value="paul weitz">Paul Weitz</option>
+              <option value="peter farrelly and bobby farrelly">Peter Farrelly and Bobby Farrelly</option>
+              <option value="shawn levy">Shawn Levy</option>
+              <option value="steven brill">Steven Brill</option>
+              <option value="todd phillips">Todd Phillips</option>
+              <option value="tom dey">Tom Dey</option>
+              <option value="wes anderson">Wes Anderson</option>
+              <option value="woody allen">Woody Allen</option>
+            </select><br>
+            <button type="submit" class="director-btn">WOW me!</button>
+          </form>
+        </div>
+
+        <!-- Get random wow from a specific movie from dropdown list -->
+        <div class="movie-container">
+        <h2 class="dropdown-title">Random "wow" from a specific movie</h2>
+          <form action="/movie" class="form" method="post">
+            <!-- <label for="movie">Choose a movie:</label></br> -->
+            <select id="movie" name="movie">
+              <option value="are you here">Are You Here</option>
+              <option value="bottle rocket">Bottle Rocket</option>
+              <option value="breakfast of champions">Breakfast of Champions</option>
+              <option value="cars">Cars</option>
+              <option value="cars 2">Cars 2</option>
+              <option value="cars 3">Cars 3</option>
+              <option value="drillbit taylor">Drillbit Taylor</option>
+              <option value="father figures">Father Figures</option>
+              <option value="free birds">Free Birds</option>
+              <option value="hall pass">Hall Pass</option>
+              <option value="i spy">I Spy</option>
+              <option value="little fockers">Little Fockers</option>
+              <option value="marley %26 me">Marley & Me</option>
+              <option value="marmaduke">Marmaduke</option>
+              <option value="meet the parents">Meet the Parents</option>
+              <option value="midnight in paris">Midnight in Paris</option>
+              <option value="night at the museum: secret of the tomb">Night at the Museum: Secret of the Tomb</option>
+              <option value="no escape">No Escape</option>
+              <option value="shanghai knights">Shanghai Knights</option>
+              <option value="shanghai noon">Shanghai Noon</option>
+              <option value="starsky %26 hutch">Starsky & Hutch</option>
+              <option value="the big bounce">The Big Bounce</option>
+              <option value="the big year">The Big Year</option>
+              <option value="the darjeeling limited">The Darjeeling Limited</option>
+              <option value="the haunting">The Haunting</option>
+              <option value="the internship">The Internship</option>
+              <option value="wedding crashers">Wedding Crashers</option>
+              <option value="you, me and dupree">You, Me and Dupree</option>
+              <option value="zoolander">Zoolander</option>
+            </select><br>
+            <button type="submit" class="movie-btn">WOW me!</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  
+  <footer>
+    <p>Made with ❤️ by Linnea S.</p>
+  </footer>
+
+<!--Javascript for collapsible-->
+<script>
+  const coll = document.getElementsByClassName("collapsible");
+  for (let i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      let content = this.nextElementSibling;
+      if (content.style.maxHeight){
+        content.style.maxHeight = null;
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
+    });
+  }
+</script>
+</body>
+</html>
+
